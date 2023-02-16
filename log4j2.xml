@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" strict="true" name="XMLConfigTest"
+               packages="org.apache.logging.log4j.test">
+  <Properties>
+    <Property name="filename">/data/webServers/library/library-app.log</Property>
+    <Property name="pattern">%d %p [%t] %c{1}: %M - %m%n</Property>
+  </Properties>
+  <Filter type="ThresholdFilter" level="trace"/>
+
+  <Appenders>
+    <Appender type="Console" name="STDOUT">
+      <Layout type="PatternLayout">
+        <Pattern>${pattern}</Pattern>
+      </Layout>
+    </Appender>
+    <Appender type="File" name="File" fileName="${filename}">
+      <Layout type="PatternLayout">
+        <Pattern>${pattern}</Pattern>
+      </Layout>
+    </Appender>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="TEST" level="trace">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+    <!-- <Logger name="com.github.vitaliibaranetskyi.library.jstltag" level="trace">
+      <AppenderRef ref="STDOUT"/>
+    </Logger> -->
+    <!-- <Logger name="com.github.vitaliibaranetskyi.library.dao.impl.mysql" level="error">
+      <AppenderRef ref="STDOUT"/>
+    </Logger> -->
+    <Root level="trace">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="File" />
+    </Root>
+  </Loggers>
+</Configuration>
