@@ -1,0 +1,27 @@
+<c:if test="${not empty pagesNum and pagesNum > 0}" >
+
+<div class="container pt-4">
+    <ul class="pagination justify-content-end">
+        <li class="page-item  <c:if test='${param.page eq 1}'>disabled</c:if>">
+            <a class="page-link"
+                href="${searchLink}&page=${param.page - 1}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <c:forEach begin="1" end="${pagesNum}" varStatus="loop" >
+            <li class="page-item  <c:if test='${loop.index eq param.page}'>active</c:if>">
+                <a class="page-link"
+                    href="${searchLink}&page=${loop.index}">${loop.index}
+                </a>
+            </li>
+        </c:forEach>
+        <li class="page-item  <c:if test='${param.page eq pagesNum}'>disabled</c:if>">
+            <a class="page-link"
+                href="${searchLink}&page=${param.page + 1}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</c:if>

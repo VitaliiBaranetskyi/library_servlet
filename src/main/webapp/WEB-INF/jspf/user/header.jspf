@@ -1,0 +1,13 @@
+<li class="nav-item">
+    <a class="nav-link" href="/controller?command=booking.listBooksInSubscription"><fmt:message key="link.user.books"/></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link position-relative" href="/controller?command=user.basket" id="bookedBooksNumParent">
+        <fmt:message key="link.user.basket"/>
+        <c:if test="${not empty booking and booking.state eq 'NEW' and booking.books.size() gt 0}">
+            <span class="position-absolute top-0 start-99 translate-middle badge rounded-pill bg-success" id="bookedBooksNum">
+                <c:out value="${booking.books.size()}" />
+            </span>
+        </c:if>
+    </a>
+</li>
